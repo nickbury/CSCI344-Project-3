@@ -22,8 +22,8 @@ var main = function () {
                 todo.categories.forEach(function (category) {
                     categoriesString = categoriesString + " " + category;
                 });
-                $("#All").append("<div class='tab active' id='All'>"
-                    + "<p>" + todo.description + "</p>"
+                $("#All").append("<div class='tab active item' id='All'>"
+                    + "<p class='description'>" + todo.description + "</p>"
                     + "<p class='categories'>" + categoriesString + "</p>"
                     + "</div>");
             });
