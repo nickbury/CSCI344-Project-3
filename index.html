@@ -3,12 +3,24 @@
   <head>
     <meta charset="utf-8">
 
-    <title>The To-Do List Inspired by Etch-n-Sketch!</title>
+    <title>The To-Do List Inspired by Etch-N-Sketch!</title>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/app/app.css" /> 
   </head>
   <body>
+    <div class="tabs">
+      <a class="tab active" href="All">All</a>
+      <a class="tab" href="Catergorized">Catergorized</a>
+      <a class="tab" href="Edit">Edit</a>
+    </div>
 
-    <script src="javascripts/app/app.css"></script>
+    <div class="content">
+      <div class="tab active" id="All">&nbsp;</div>
+      <div class="tab" id="Catergorized">&nbsp;</div>
+      <div class="tab" id="Edit">&nbsp;</div>
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="javascripts/app/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,23 @@
+.tabs {
+  margin-top: 50px;
+  margin-bottom:20px;
+}
+
+.tabs .tab {
+  background: #ccc;
+  padding: 5px;
+}
+
+.tabs .active {
+  background: white;
+  border: 1px solid black;
+  border-bottom-width: 0;
+}
+
+.content .tab {
+  display: none; 
+}
+
+.content .active {
+  display: block;
+}
