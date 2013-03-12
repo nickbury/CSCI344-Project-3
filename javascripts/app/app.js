@@ -2,6 +2,8 @@
 /*global $, document */
 
 var main = function () {
+    //count variable
+    var itemNum = 0;
 
     var setUpClickHandler = function (anchor) {
         anchor.click(function () {
@@ -15,24 +17,40 @@ var main = function () {
         });
     };
 
-    var JSONLoader = function () {
+    var addTodo = function (desc, categories) {
+        $("#All").append("<div class='item " + itemNum + "''>"
+            + "<p class='description'>" + desc + "</p>"
+            + "<p class='categories'>" + categories + "</p>"
+            + "<button type='button' class='remove' id='"
+            + itemNum
+            + "'>Remove</button>"
+            + "</div>");
+        $(".remove").click(function () {
+            var toBeRemoved = $(this).attr("id");
+            $("." + toBeRemoved).remove();
+        });
+        itemNum++;
+    };
+
+    var JSONLoader = function (callback) {
         $.getJSON("all.json", function (todos) {
             todos.forEach(function (todo) {
                 var categoriesString = "";
                 todo.categories.forEach(function (category) {
                     categoriesString = categoriesString + " " + category;
                 });
-                $("#All").append("<div class='tab active item' id='All'>"
-                    + "<p class='description'>" + todo.description + "</p>"
-                    + "<p class='categories'>" + categoriesString + "</p>"
-                    + "</div>");
+                addTodo(todo.description, categoriesString);
             });
         });
     };
 
+    var renderCategorized = function () {
+
+    };
+
     var initialize = function () {
-        setUpClickHandler($(".tabs .tab"));
         JSONLoader();
+        setUpClickHandler($(".tabs .tab"));
     };
 
     initialize();
