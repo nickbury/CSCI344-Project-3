@@ -5,7 +5,7 @@ var main = function () {
     //count variable
     var itemNum = 0;
 
-    var setUpClickHandler = function (anchor) {
+    var setUpTabHandler = function (anchor) {
         anchor.click(function () {
             var target = $(this).attr("href");
 
@@ -32,6 +32,18 @@ var main = function () {
         itemNum++;
     };
 
+    var setUpAddToDoHandler = function () {
+        $("#addToDo").click(function () {
+            var desc = $("#desc").val();
+            var categories = $("#categ").val();
+
+            addTodo(desc, categories);
+
+            $("#desc").val("");
+            $("#categ").val("");
+        });
+    };
+
     var JSONLoader = function (callback) {
         $.getJSON("all.json", function (todos) {
             todos.forEach(function (todo) {
@@ -50,7 +62,8 @@ var main = function () {
 
     var initialize = function () {
         JSONLoader();
-        setUpClickHandler($(".tabs .tab"));
+        setUpTabHandler($(".tabs .tab"));
+        setUpAddToDoHandler();
     };
 
     initialize();
