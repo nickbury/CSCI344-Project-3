@@ -15,19 +15,23 @@ var main = function () {
             var description = $(".description:eq(" + i + ")").html();
             var categoriesStr = $(".categories:eq(" + i + ")").html();
             var categories = categoriesStr.split(" ");
-            for (j = 1; j < categories.length; j++) {
-                if ($("#Categorized > .item").is("." + categories[j])) {
-                    $("." + categories[j]).append("<p>"
-                        + description
-                        + "</p>");
+            for (j = 0; j < categories.length; j++) {
+                if (categories[j] === undefined || categories[j] === '') {
+                    //do nothing
                 } else {
-                    $("#Categorized").append("<div class='item "
-                        + categories[j]
-                        + "'><h4 class='categoryTitle'>"
-                        + categories[j]
-                        + "</h4><p>"
-                        + description
-                        + "</p></div>");
+                    if ($("#Categorized > .item").is("." + categories[j])) {
+                        $("." + categories[j]).append("<p class='description'>"
+                            + description
+                            + "</p>");
+                    } else {
+                        $("#Categorized").append("<div class='item "
+                            + categories[j]
+                            + "'><h4 class='categoryTitle'>"
+                            + categories[j]
+                            + "</h4><p class='description'>"
+                            + description
+                            + "</p></div>");
+                    }
                 }
             }
         }
