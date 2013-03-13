@@ -4,6 +4,35 @@
 var main = function () {
     //count variable
     var itemNum = 0;
+    var totalTodos = 0;
+
+    var renderCategorized = function () {
+        //clear previous content
+        $("#Categorized").children().remove();
+        //generate new content
+        var i, j;
+        for (i = 0; i < totalTodos; i++) {
+            var description = $(".description:eq(" + i + ")").html();
+            var categoriesStr = $(".categories:eq(" + i + ")").html();
+            var categories = categoriesStr.split(" ");
+            for (j = 1; j < categories.length; j++) {
+                if ($("#Categorized > .item").is("." + categories[j])) {
+                    $("." + categories[j]).append("<p>"
+                        + description
+                        + "</p>");
+                } else {
+                    $("#Categorized").append("<div class='item "
+                        + categories[j]
+                        + "'><h4 class='categoryTitle'>"
+                        + categories[j]
+                        + "</h4><p>"
+                        + description
+                        + "</p></div>");
+                }
+            }
+        }
+
+    };
 
     var setUpTabHandler = function (anchor) {
         anchor.click(function () {
@@ -12,6 +41,10 @@ var main = function () {
             $(".active").removeClass("active");
             $(this).addClass("active");
             $("#" + target).addClass("active");
+
+            if (target === "Categorized") {
+                renderCategorized();
+            }
 
             return false;
         });
@@ -25,11 +58,13 @@ var main = function () {
             + itemNum
             + "'>Remove</button>"
             + "</div>");
-        $(".remove").click(function () {
+        $("#" + itemNum).click(function () {
             var toBeRemoved = $(this).attr("id");
             $("." + toBeRemoved).remove();
+            totalTodos--;
         });
         itemNum++;
+        totalTodos++;
     };
 
     var setUpAddToDoHandler = function () {
@@ -44,7 +79,7 @@ var main = function () {
         });
     };
 
-    var JSONLoader = function (callback) {
+    var jsonLoader = function () {
         $.getJSON("all.json", function (todos) {
             todos.forEach(function (todo) {
                 var categoriesString = "";
@@ -56,12 +91,8 @@ var main = function () {
         });
     };
 
-    var renderCategorized = function () {
-
-    };
-
     var initialize = function () {
-        JSONLoader();
+        jsonLoader();
         setUpTabHandler($(".tabs .tab"));
         setUpAddToDoHandler();
     };
