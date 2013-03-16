@@ -60,9 +60,9 @@ var main = function () {
             + "<div class='description'>" + desc + "</div>"
             + "<div class='categories'>" + categories + "</div>"
             + "</div><div class='span2'>"
-            + "<button type='button' class='remove' id='"
+            + "<button type='button' class='remove btn btn-link' id='"
             + itemNum
-            + "'>Remove</button>"
+            + "'>X</button>"
             + "</div>"
             + "</div>");
         $("#" + itemNum).click(function () {

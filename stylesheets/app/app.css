@@ -43,18 +43,27 @@ h1 {
 }
 
 .item {
-
+  padding-bottom: 10px;
 }
 
 .description {
   padding:0 0 0 5px;
+  background-color: #ffe;
+  font-family: 'Inder', sans-serif;
 }
 
 .categories {
   font-size: 9px;
-  color: gray;
+  color: #aaa;
   padding: 0 0 0 10px;
+  background-color: #ffe;
+  font-family: 'Inder', sans-serif;
 }
 
 .remove {
+  color: red;
+}
+
+.remove:hover {
+  color: #800;
 }
