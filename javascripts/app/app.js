@@ -1,10 +1,11 @@
 /*jslint indent:4*/
-/*global $, document */
+/*global $, document, console */
 
 var main = function () {
+    "use strict";
     //count variable
-    var itemNum = 0;
-    var totalTodos = 0;
+    var itemNum = 0,
+        totalTodos = 0;
 
     var renderCategorized = function () {
         //clear previous content
