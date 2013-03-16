@@ -17,20 +17,21 @@ var main = function () {
             var categories = categoriesStr.split(" ");
             for (j = 0; j < categories.length; j++) {
                 if (categories[j] === undefined || categories[j] === '') {
-                    //do nothing
+                    console.log("Invalid category");
                 } else {
-                    if ($("#Categorized > .item").is("." + categories[j])) {
-                        $("." + categories[j]).append("<p class='description'>"
-                            + description
-                            + "</p>");
+                    if ($("#Categorized > .item > .span10").is("." + categories[j])) {
+                        $("." + categories[j]).append("<div class='description'>"
+                            + " &#187; " + description
+                            + "</div>");
                     } else {
-                        $("#Categorized").append("<div class='item "
+                        $("#Categorized").append("<div class='item row'>"
+                            + "<div class='span10 "
                             + categories[j]
-                            + "'><h4 class='categoryTitle'>"
+                            + "'><div class='categoryTitle'>"
                             + categories[j]
-                            + "</h4><p class='description'>"
-                            + description
-                            + "</p></div>");
+                            + "</div><div class='description'>"
+                            + " &#187; " + description
+                            + "</div></div></div>");
                     }
                 }
             }
@@ -55,14 +56,15 @@ var main = function () {
     };
 
     var addTodo = function (desc, categories) {
-        $("#All").append("<div class='item row " + itemNum + "''>"
-            + "<div class='span10'>"
-            + "<div class='description'>" + desc + "</div>"
-            + "<div class='categories'>" + categories + "</div>"
-            + "</div><div class='span2'>"
+        $("#All").append("<div class='item row-fluid " + itemNum + "'>"
+            + "<div class='span1'>"
             + "<button type='button' class='remove btn btn-link' id='"
             + itemNum
             + "'>X</button>"
+            + "</div>"
+            + "<div class='span10'>"
+            + "<div class='description'>" + desc + "</div>"
+            + "<div class='categories'>" + categories + "</div>"
             + "</div>"
             + "</div>");
         $("#" + itemNum).click(function () {

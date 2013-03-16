@@ -24,14 +24,16 @@ h1 {
 }
 
 .tabs .tab {
-  background: #ccc;
+  background: #eee;
   padding: 5px;
 }
 
+.tabs .tab:hover {
+  background-color: #ddd;
+}
+
 .tabs .active {
-  background: white;
-  border: 1px solid black;
-  border-bottom-width: 0;
+  background: #ccc;
 }
 
 .content .tab {
@@ -44,6 +46,12 @@ h1 {
 
 .item {
   padding-bottom: 10px;
+}
+
+.categoryTitle {
+  font-family: 'Inder', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .description {
