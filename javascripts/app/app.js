@@ -55,12 +55,15 @@ var main = function () {
     };
 
     var addTodo = function (desc, categories) {
-        $("#All").append("<div class='item " + itemNum + "''>"
-            + "<p class='description'>" + desc + "</p>"
-            + "<p class='categories'>" + categories + "</p>"
+        $("#All").append("<div class='item row " + itemNum + "''>"
+            + "<div class='span10'>"
+            + "<div class='description'>" + desc + "</div>"
+            + "<div class='categories'>" + categories + "</div>"
+            + "</div><div class='span2'>"
             + "<button type='button' class='remove' id='"
             + itemNum
             + "'>Remove</button>"
+            + "</div>"
             + "</div>");
         $("#" + itemNum).click(function () {
             var toBeRemoved = $(this).attr("id");
