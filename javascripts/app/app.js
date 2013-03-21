@@ -67,7 +67,9 @@ var main = function () {
                 + "</div>");
             $("#" + itemNum).click(function () {
                 var toBeRemoved = $(this).attr("id");
-                $("." + toBeRemoved).remove();
+                $("." + toBeRemoved).fadeOut(150, function () {
+                    $(this).remove();
+                });
                 totalTodos--;
             });
             itemNum++;
